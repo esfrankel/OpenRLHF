@@ -1,0 +1,1 @@
+ - need to run `module load cuda/12.4.1` at the start of interactive session

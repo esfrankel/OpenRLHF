@@ -7,6 +7,7 @@ flash-attn==2.5.8
 isort
 jsonlines
 loralib
+numpy<=2.0.0
 optimum
 packaging
 peft
