@@ -34,8 +34,16 @@ def preprocess_data(
                 prompt = (
                     prompt.replace("prompter:", "\nHuman: ").replace("assistant:", "\nAssistant: ") + "\nAssistant: "
                 )
-            chosen = data["chosen"]
-            rejected = data["rejected"]
+            # argilla/ultrafeedback-binarized-preferences-cleaned
+            if isinstance(data["chosen"], list):
+                chosen = data["chosen"][1]["content"]
+            else:
+                chosen = data["chosen"]
+                
+            if isinstance(data["rejected"], list):
+                rejected = data["rejected"][1]["content"]
+            else:
+                rejected = data["rejected"]
         # lmsys/chatbot_arena_conversations
         elif exist_and_not_none(data, "winner") and exist_and_not_none(data, "conversation_a"):
             prompt = ""

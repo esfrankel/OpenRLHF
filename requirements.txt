@@ -7,6 +7,7 @@ flash-attn==2.5.8
 isort
 jsonlines
 loralib
+mpi4py==3.1.6
 numpy<=2.0.0
 optimum
 packaging
