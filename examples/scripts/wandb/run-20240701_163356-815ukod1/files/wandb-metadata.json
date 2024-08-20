@@ -1,0 +1,359 @@
+{
+    "os": "Linux-4.18.0-513.18.1.el8_9.x86_64-x86_64-with-glibc2.28",
+    "python": "3.10.14",
+    "heartbeatAt": "2024-07-01T23:34:03.466556",
+    "startedAt": "2024-07-01T23:33:56.989095",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--local_rank=0",
+        "--save_path",
+        "./ckpt/7b_llama",
+        "--save_steps",
+        "-1",
+        "--logging_steps",
+        "1",
+        "--eval_steps",
+        "-1",
+        "--train_batch_size",
+        "128",
+        "--micro_train_batch_size",
+        "1",
+        "--pretrain",
+        "OpenLLMAI/Llama-2-7b-sft-model-ocra-500k",
+        "--bf16",
+        "--max_epochs",
+        "1",
+        "--max_len",
+        "2048",
+        "--zero_stage",
+        "3",
+        "--learning_rate",
+        "9e-6",
+        "--dataset",
+        "Anthropic/hh-rlhf,tasksource/oasst1_pairwise_rlhf_reward,lmsys/chatbot_arena_conversations,openai/webgpt_comparisons",
+        "--dataset_probs",
+        "0.72,0.08,0.12,0.08",
+        "--flash_attn",
+        "--gradient_checkpointing",
+        "--use_wandb",
+        "True",
+        "--wandb_org",
+        "esfrankel-uw",
+        "--wandb_group",
+        "train_rm_llama",
+        "--wandb_project",
+        "openrlhf_train_rm_ppi"
+    ],
+    "state": "running",
+    "program": "/mmfs1/gscratch/sewoong/ericsf/OpenRLHF/examples/scripts/../train_rm.py",
+    "codePathLocal": null,
+    "codePath": "examples/train_rm.py",
+    "git": {
+        "remote": "git@github.com:esfrankel/OpenRLHF.git",
+        "commit": "039e7df554a88e24bd7c06124925852e9bb6057c"
+    },
+    "email": "esfrankel17@gmail.com",
+    "root": "/mmfs1/gscratch/sewoong/ericsf/OpenRLHF",
+    "host": "g3052",
+    "username": "ericsf",
+    "executable": "/gscratch/sewoong/ericsf/miniconda3/envs/openrlhf/bin/python",
+    "cpu_count": 52,
+    "cpu_count_logical": 52,
+    "cpu_freq": {
+        "current": 3760.995192307692,
+        "min": 4000.0,
+        "max": 4000.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3327.256,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3332.421,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3414.58,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3336.005,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3328.536,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3341.611,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3342.789,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3410.306,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3346.056,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3347.427,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 2572.965,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3410.346,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3350.859,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3409.295,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3353.002,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 4000.0,
+            "min": 4000.0,
+            "max": 4000.0
+        },
+        {
+            "current": 3307.188,
+            "min": 4000.0,
+            "max": 4000.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 503.5509605407715,
+            "used": 7.041049957275391
+        }
+    },
+    "gpu": "NVIDIA A40",
+    "gpu_count": 4,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA A40",
+            "memory_total": 48305799168
+        },
+        {
+            "name": "NVIDIA A40",
+            "memory_total": 48305799168
+        },
+        {
+            "name": "NVIDIA A40",
+            "memory_total": 48305799168
+        },
+        {
+            "name": "NVIDIA A40",
+            "memory_total": 48305799168
+        }
+    ],
+    "memory": {
+        "total": 1007.1019248962402
+    }
+}
