@@ -1,5 +1,14 @@
 set -x 
 
+# python -m openrlhf.cli.serve_rm \
+#     --reward_pretrain OpenRLHF/Llama-3-8b-rm-700k \
+#     --port 5000 \
+#     --bf16 \
+#     --flash_attn \
+#     --normalize_reward \
+#     --max_len 8192 \
+#     --batch_size 16
+
 ray job submit --address="http://127.0.0.1:8265" \
    --runtime-env-json='{"working_dir": "/openrlhf"}' \
    -- python3 -m openrlhf.cli.train_ppo_ray \
@@ -13,10 +22,9 @@ ray job submit --address="http://127.0.0.1:8265" \
    --actor_num_gpus_per_node 2 \
    --vllm_num_engines 2 \
    --vllm_tensor_parallel_size 2 \
-   --colocate_critic_reward \
    --colocate_actor_ref \
    --pretrain OpenRLHF/Llama-3-8b-sft-mixture \
-   --reward_pretrain OpenRLHF/Llama-3-8b-rm-mixture \
+   --remote_rm_url http://localhost:5000/get_reward \
    --save_path /openrlhf/examples/checkpoint/llama3-8b-rlhf \
    --micro_train_batch_size 8 \
    --train_batch_size 128 \
@@ -38,8 +46,4 @@ ray job submit --address="http://127.0.0.1:8265" \
    --adam_offload \
    --flash_attn \
    --gradient_checkpointing \
-   --load_checkpoint \
    --use_wandb {wandb_token}
-
-# --runtime-env-json='{"setup_commands": ["pip install openrlhf[vllm]"]}' [Install deps]
-# --ref_reward_offload [Offload to CPU]

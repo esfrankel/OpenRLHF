@@ -1,4 +1,5 @@
 import math
+import os
 from typing import Dict, Optional
 
 import ray
@@ -77,7 +78,8 @@ class CriticModelRayActor(BasePPORole):
             target_modules=strategy.args.target_modules,
             lora_dropout=strategy.args.lora_dropout,
             ds_config=strategy.get_ds_train_config(is_actor=False),
-            head_prefix=strategy.args.head_prefix,
+            value_head_prefix=strategy.args.value_head_prefix,
+            init_value_head=strategy.args.pretrain == strategy.args.critic_pretrain,
         )
         strategy.print(critic)
         strategy.print("reward normalization status: {}".format(strategy.args.normalize_reward))
@@ -91,15 +93,16 @@ class CriticModelRayActor(BasePPORole):
 
         # configure optimizer
         critic_optim = strategy.create_optimizer(
-            critic, lr=args.critic_learning_rate, betas=(0.9, 0.95), weight_decay=args.l2
+            critic, lr=args.critic_learning_rate, betas=args.adam_betas, weight_decay=args.l2
         )
 
         # configure scheduler
         critic_scheduler = get_scheduler(
-            "cosine",
+            "cosine_with_min_lr",
             critic_optim,
             num_warmup_steps=math.ceil(max_steps * 0.03),
             num_training_steps=max_steps,
+            scheduler_specific_kwargs={"min_lr": args.critic_learning_rate * 0.1},
         )
 
         if args.gradient_checkpointing:
@@ -112,6 +115,12 @@ class CriticModelRayActor(BasePPORole):
             (critic, critic_optim, critic_scheduler),
             is_rlhf=True,
         )
+
+        # load checkpoint
+        if args.load_checkpoint and os.path.exists(os.path.join(args.ckpt_path, "_actor")):
+            ckpt_path = os.path.join(args.ckpt_path, "_critic")
+            strategy.load_ckpt(self.critic, ckpt_path)
+            strategy.print(f"Loaded the checkpoint: {ckpt_path}")
 
         # configure Trainer
         # only use wandb at actor model
@@ -174,4 +183,10 @@ class CriticModelRayActor(BasePPORole):
             self.critic,
             self.tokenizer,
             args.save_path + "_critic",
+        )
+
+    def save_checkpoint(self, tag):
+        args = self.strategy.args
+        self.strategy.save_ckpt(
+            self.critic, os.path.join(args.ckpt_path, "_critic"), tag, args.max_ckpt_num, args.max_ckpt_mem
         )

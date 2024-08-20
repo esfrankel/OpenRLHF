@@ -1,9 +1,3 @@
-
-
-
-
-
-
 module load cuda/12.4.1
 module load ompi/4.1.0
 
